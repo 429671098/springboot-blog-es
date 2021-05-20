@@ -1,0 +1,44 @@
+server:
+  port: 8082
+spring:
+  #数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://139.198.176.250:3306/blog?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: Abc202104@
+    # hikari 数据源专用配置
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+
+  # jpa 相关配置
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    # 数据库方言
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+
+  # es 配置
+  #  data:
+  #    elasticsearch:
+  #      cluster-nodes: localhost:9300 # 高版本已启用，通过 ElasticsearchConfig 配置文件注入
+  #      cluster-name: elasticsearch  # es 集群的名称
+
+  # mvc 静态资源映射
+  mvc:
+    static-path-pattern: /**
+
+  # 静态资源热部署
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      additional-paths: static/**
+
+  # 日期格式化
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+
+
